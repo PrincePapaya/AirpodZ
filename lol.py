@@ -1,60 +1,67 @@
 import cv2
 import numpy as np
 
-def colorblind_filter(frame):
+# --- TOGGLES ---
+swap_red_blue = True
+yellow_to_cyan = True
+
+def intensity_color_shift(frame):
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+    h, s, v = cv2.split(hsv)
 
-    # --- RED REGION MASK (HSV) ---
-    lower_red1 = np.array([0, 70, 50])
-    upper_red1 = np.array([10, 255, 255])
-    lower_red2 = np.array([170, 70, 50])
-    upper_red2 = np.array([180, 255, 255])
-    red_mask = cv2.bitwise_or(
-        cv2.inRange(hsv, lower_red1, upper_red1),
-        cv2.inRange(hsv, lower_red2, upper_red2)
-    )
+    # --- RED MASK (two hue ranges) ---
+    red_mask1 = cv2.inRange(hsv, (0, 70, 50), (10, 255, 255))
+    red_mask2 = cv2.inRange(hsv, (170, 70, 50), (180, 255, 255))
+    red_mask = cv2.bitwise_or(red_mask1, red_mask2)
 
-    # --- BLUE REGION MASK (HSV) ---
-    lower_blue = np.array([100, 70, 50])
-    upper_blue = np.array([130, 255, 255])
-    blue_mask = cv2.inRange(hsv, lower_blue, upper_blue)
+    # --- BLUE MASK ---
+    blue_mask = cv2.inRange(hsv, (100, 70, 50), (130, 255, 255))
 
-    # --- REGION COLOR SHIFTS ---
-    hsv_shifted = hsv.copy()
+    # --- YELLOW MASK ---
+    yellow_mask = cv2.inRange(hsv, (20, 70, 50), (35, 255, 255))
 
-    # Red region -> Blue hue (~120)
-    hsv_shifted[..., 0] = np.where(red_mask == 255, 120, hsv_shifted[..., 0])
+    h_new = h.copy()
 
-    # Blue region -> Red hue (~0)
-    hsv_shifted[..., 0] = np.where(blue_mask == 255, 0, hsv_shifted[..., 0])
+    # --- RED ↔ BLUE SWAP (intensity preserved) ---
+    if swap_red_blue:
+        # Red hue → Blue hue (~120)
+        h_new = np.where(red_mask == 255, 120, h_new)
+        # Blue hue → Red hue (~0)
+        h_new = np.where(blue_mask == 255, 0, h_new)
 
-    filtered = cv2.cvtColor(hsv_shifted, cv2.COLOR_HSV2BGR)
+    # --- YELLOW → CYAN SHIFT ---
+    if yellow_to_cyan:
+        # Yellow hue (~25) → Cyan hue (~90)
+        h_new = np.where(yellow_mask == 255, 90, h_new)
 
-    # --- STRICT PIXEL RULES ---
-    output = filtered.copy()
-
-    pure_red_mask  = frame[:, :, 2] == 255  # R channel
-    pure_blue_mask = frame[:, :, 0] == 255  # B channel
-
-    output[pure_red_mask]  = [255, 0, 0]   # Blue (BGR)
-    output[pure_blue_mask] = [0, 0, 255]   # Red  (BGR)
-
-    return output
+    hsv_shifted = cv2.merge([h_new, s, v])
+    return cv2.cvtColor(hsv_shifted, cv2.COLOR_HSV2BGR)
 
 
 cap = cv2.VideoCapture(0)
+
+print("Controls: r = Red↔Blue | y = Yellow→Cyan | q = Quit")
 
 while True:
     ret, frame = cap.read()
     if not ret:
         break
 
-    output = colorblind_filter(frame)
-
+    output = intensity_color_shift(frame)
     combined = np.hstack((frame, output))
-    cv2.imshow("Original | Filtered", combined)
+    cv2.imshow("Original | Color Assist", combined)
 
-    if cv2.waitKey(1) & 0xFF == ord('q'):
+    key = cv2.waitKey(1) & 0xFF
+
+    if key == ord('r'):
+        swap_red_blue = not swap_red_blue
+        print(f"Red↔Blue: {'ON' if swap_red_blue else 'OFF'}")
+
+    elif key == ord('y'):
+        yellow_to_cyan = not yellow_to_cyan
+        print(f"Yellow→Cyan: {'ON' if yellow_to_cyan else 'OFF'}")
+
+    elif key == ord('q'):
         break
 
 cap.release()
