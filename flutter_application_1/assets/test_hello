@@ -1,0 +1,6 @@
+# assets/python_script.py
+
+def greet(name):
+    return f"Hello, {name} from Python!"
+
+result = greet("Flutter User")
