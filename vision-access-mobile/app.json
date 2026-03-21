@@ -1,0 +1,42 @@
+{
+  "expo": {
+    "name": "Luma Lane",
+    "slug": "luma-lane",
+    "scheme": "lumalane",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "plugins": [
+      [
+        "react-native-vision-camera",
+        {
+          "cameraPermissionText": "Luma Lane needs camera access to deliver live color assistance, glare reduction, and road sign guidance."
+        }
+      ],
+      [
+        "react-native-fast-tflite",
+        {
+          "enableCoreMLDelegate": true,
+          "enableAndroidGpuLibraries": true
+        }
+      ]
+    ],
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.foundershack.lumalane",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Luma Lane uses the camera for live visual accessibility features."
+      }
+    },
+    "android": {
+      "package": "com.foundershack.lumalane",
+      "permissions": [
+        "CAMERA"
+      ]
+    }
+  }
+}
