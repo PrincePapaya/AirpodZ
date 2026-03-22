@@ -1,1 +1,1 @@
-# AirpodZ
+# AirPodz
