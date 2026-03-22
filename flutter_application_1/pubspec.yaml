@@ -30,8 +30,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  camera: ^0.12.0
+  camera: ^0.11.4
   flutter_shaders: ^0.1.3
+  flutter_tts: ^4.2.5
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -63,6 +64,9 @@ flutter:
 
   assets:
     - assets/test_hello
+    - assets/models/roadsign.tflite
+    - assets/models/roadsign_model.json
+    - assets/models/roadsign_labels.txt
   shaders:
     - shaders/color_assist.frag
   # To add assets to your application, add an assets section, like this:

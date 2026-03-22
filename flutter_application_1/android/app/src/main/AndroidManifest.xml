@@ -2,9 +2,10 @@
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
-        android:label="ChromaShift"
+        android:label="ChromaShitf"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        android:pageSizeCompat="enabled">
         <activity
             android:name=".MainActivity"
             android:exported="true"
