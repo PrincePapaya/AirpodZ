@@ -1,0 +1,324 @@
+Recommended 7-minute structure
+Slide 1 — Hook: make it human
+
+Title: What if the world’s warning signals weren’t designed for you?
+
+Start with your teammate.
+
+What to say:
+
+One of our teammates is red-green colorblind.
+Which sounds manageable, until you realise how much of modern life relies on color-coded information.
+Traffic lights. Road signs. Grocery shopping. Alerts. Indicators.
+At night, especially, red on dark backgrounds can become really hard to distinguish.
+So this project started very simply: not as “let’s build some AI thing,” but as “why is basic visual information still inaccessible in 2026?”
+
+Funny/light line:
+
+Basically, we discovered that the world is running a very aggressive red-green subscription plan.
+
+Why this works:
+
+immediately nails problem identification
+makes the problem personal and memorable
+avoids sounding like a generic hackathon intro
+Slide 2 — The problem and why it matters now
+
+Title: The problem isn’t color. It’s missed information.
+
+What to say:
+
+Colorblindness is often treated like a minor inconvenience.
+But the real issue is not seeing “the wrong color” — it’s missing information that other people get instantly.
+That can mean hesitation while driving, uncertainty while shopping, or needing to double-check things others process in a glance.
+And today is the right time to solve this because real-time computer vision, lightweight mobile inference, and AR wearables have finally made live visual assistance practical — not theoretical.
+
+Frame the pain points as 3 buckets:
+
+Safety: traffic lights, road signs, night visibility
+Daily independence: shopping, item recognition, ripeness, labels
+Confidence: reducing second-guessing in everyday environments
+
+Funny/light line:
+
+Nobody wants to play “guess the banana” in aisle 4.
+
+This hits the rubric’s “why is today the right time” and “urgency/frequency” really well.
+
+Slide 3 — How we validated it
+
+Title: We didn’t guess. We asked.
+
+This should be one of your strongest slides because customer validation is worth 15 points, which is huge.
+
+What to say:
+
+On Day 1, before building anything, we focused on ideation and customer validation.
+We interviewed multiple people individually and asked three things:
+
+Would this actually be useful?
+In which situations would you trust or use it?
+What features would make it genuinely worth trying?
+
+Then summarise findings clearly:
+
+users were most interested in driving/night visibility
+shopping and daily object recognition also came up often
+people cared about speed and simplicity, not a cluttered interface
+they preferred assistive overlays over complicated settings
+trust mattered: users wanted help identifying things, not constant noise
+
+Strong phrasing:
+
+The biggest insight was that users didn’t want “more information.”
+They wanted the right information, at the right time, with almost no friction.
+
+Funny/light line:
+
+In other words, no one asked for a 14-button dashboard that requires a PhD to turn on.
+
+If you have even rough numbers, include them:
+
+“We interviewed X people”
+“Y% mentioned driving/night visibility”
+“Z% said they’d try it”
+
+Even if it’s small sample size, that’s still better than vague claims.
+
+Slide 4 — What we decided to build
+
+Title: From feedback to product direction
+
+What to say:
+
+Based on that feedback, we narrowed the MVP to two core functions:
+
+live color remapping for difficult color combinations, like red/blue and yellow/cyan
+road sign detection to highlight important visual cues during driving
+
+This gave us a focused first product: an accessibility assistant for real-world interpretation.
+
+Then explain the product simply:
+
+camera sees the world
+app shifts difficult colors into more distinguishable ranges
+object detection identifies likely road signs
+important elements are highlighted clearly
+future version overlays this onto Meta Ray-Ban glasses in AR
+
+Better phrasing than “Google Lens for colorblind people”:
+
+You can think of it as a real-time accessibility layer for vision.
+
+That sounds more original and more defensible.
+
+Slide 5 — Why this is different
+
+Title: Why existing tools weren’t enough
+
+This is where you cover USP + defensibility.
+
+What to say:
+
+There are color filters.
+There are object detectors.
+There are general camera apps.
+But we found a gap: most tools do one piece in isolation.
+We’re combining personalized visual reinterpretation with context-aware detection in a way that directly serves colorblind users in real-world settings.
+
+Then make the differentiation explicit:
+
+Existing alternatives
+
+static filters
+non-specialized accessibility settings
+general-purpose visual search tools
+
+Your edge
+
+built specifically for colorblind use cases
+focused on high-stakes moments like driving at night
+combines perception correction + scene understanding
+designed for future AR wearable deployment
+
+Strong line:
+
+We’re not just recoloring the world. We’re helping users understand what in the world matters.
+
+That is a good pitch sentence.
+
+Slide 6 — Our process across the 3 days
+
+Title: How we went from idea to prototype
+
+This should be very chronological and polished.
+
+What to say:
+
+We structured the hackathon like a compressed startup sprint.
+
+Day 1
+identified the problem through personal experience
+brainstormed use cases
+conducted customer interviews
+narrowed down the most valuable features
+Day 2
+built the MVP pipeline
+implemented live color transformation
+trained a neural network / object detection model for road sign recognition
+tested feasibility of combining both in one workflow
+Day 3
+refining the prototype
+integrating road sign detection into the app
+improving usability and performance
+shaping the product story and presentation around what users actually valued
+
+Funny/light line:
+
+Day 1 was empathy. Day 2 was caffeine. Day 3 was integration bugs.
+
+This slide matters because judges want process, not just outcome.
+
+Slide 7 — The prototype
+
+Title: What the MVP does today
+
+This should map directly to Implementation and Value delivery.
+
+What to say:
+
+Our MVP currently demonstrates two key capabilities:
+
+real-time color shifting to make difficult hues more distinguishable
+road sign detection to highlight critical cues in the environment
+
+Then explain value through scenarios:
+
+Night driving: improve visibility of important signs and signals
+Shopping: distinguish produce and visually similar items more confidently
+Daily navigation: reduce uncertainty in color-dependent environments
+
+Important wording:
+
+The goal of the MVP is not to solve every visual challenge at once.
+It is to prove that real-time assistive interpretation is both feasible and useful.
+
+That sounds mature and realistic.
+
+Slide 8 — Demo framing
+
+Title: What we’re testing through the prototype
+
+This is subtle but very smart, because the rubric explicitly asks how the value and assumptions will be tested through the build.
+
+Say this:
+
+Our prototype is designed to test three key assumptions:
+
+that live color remapping improves practical distinguishability
+that object detection adds value in high-risk contexts like driving
+that users prefer an assistive, low-friction interface over manual tools
+
+Then mention what feedback you’re looking for:
+
+Is it fast enough?
+Is it intuitive?
+Does it reduce uncertainty?
+Which contexts feel most valuable?
+
+This makes you sound like founders, not just builders.
+
+Slide 9 — Why AR glasses make sense
+
+Title: Why this belongs on smart glasses
+
+What to say:
+
+We see the long-term home for this product on AR wearables like Meta Ray-Ban glasses.
+Why? Because accessibility works best when it disappears into the user’s routine.
+People don’t want to stop, unlock an app, point a camera, and wait.
+They want assistance in the moment they need it — hands-free, fast, and natural.
+
+Then explain why glasses are strong:
+
+always-on camera context
+overlays directly in field of view
+safer and less distracting than checking a phone
+strong fit for navigation and mobility
+
+Funny/light line:
+
+Also, if the future insists on putting cameras on our faces, we might as well make them useful.
+
+Slide 10 — Business case
+
+Title: Why people would actually pay for this
+
+Keep this brief. Business Case is only 10 points, so don’t overdo it.
+
+What to say:
+
+We see a few possible monetization paths:
+
+a freemium mobile app with premium assistive modes
+partnerships with smart-glasses platforms
+accessibility collaborations with driving, navigation, or retail partners
+potentially B2B or institutional distribution through accessibility organisations
+
+Then say demand is validated through:
+
+interviews
+strong emotional resonance of the problem
+repeated interest in real-world use cases like driving and shopping
+
+Funny/light line:
+
+And when it comes to monetisation… this is the part where we say “investors, please don’t be shy.”
+
+Or:
+
+This is where you help us. Ideally with money.
+
+That’ll land if delivered dry.
+
+Slide 11 — Risks and how you thought about them
+
+Title: What could go wrong, and how we’re approaching it
+
+This helps with market trends & risks and makes you sound grounded.
+
+Mention 3 risks:
+
+False detections or missed detections
+→ mitigate through better training, confidence thresholds, and careful UX
+Too much visual clutter
+→ keep overlays minimal and context-aware
+Trust and safety in driving contexts
+→ position as assistive support, not autonomous decision-making
+
+Strong line:
+
+We’re not claiming this replaces human judgment.
+We’re building a tool that reduces ambiguity where ambiguity already exists.
+
+Very important. Makes your pitch sound responsible.
+
+Slide 12 — End with vision
+
+Title: What we’re building toward
+
+What to say:
+
+We started with one teammate’s lived experience.
+Over three days, that turned into interviews, insights, a prototype, and a clearer product direction.
+What we have now is not just a demo. It’s the beginning of a new way to think about accessibility:
+not as an afterthought, but as a real-time intelligent layer between people and the world around them.
+
+Then finish strong:
+
+If the world communicates through color, signs, and visual cues, then everyone deserves access to that information.
+We’re building that access.
+
+Funny closer option:
+
+And ideally, we’re also saving bananas, traffic signs, and team members from future misunderstandings.
